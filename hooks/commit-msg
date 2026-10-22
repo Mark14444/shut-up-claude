@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# git commit-msg hook: strips AI attribution lines from the commit message.
+# Install: cp hooks/commit-msg .git/hooks/commit-msg && chmod +x .git/hooks/commit-msg
+msg_file="$1"
+tmp="$(mktemp)"
+grep -v -i -E \
+  -e '^[[:space:]]*(co-authored-by|assisted-by|helped-by|signed-off-by|reviewed-by):.*(claude|anthropic|openai|copilot|gemini|gpt|\bai\b)' \
+  -e 'generated (with|by|using) .*(claude|anthropic|\bai\b)' \
+  -e 'claude[ -]code|noreply@anthropic\.com|🤖' \
+  "$msg_file" > "$tmp"
+# drop trailing blank lines left behind
+sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$tmp" > "$msg_file"
+rm -f "$tmp"
