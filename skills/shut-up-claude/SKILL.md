@@ -7,7 +7,10 @@ description: MUST USE before writing ANY artifact that leaves the chat — git c
 
 The user's standing rule: **nothing you produce may say, hint, or encode that it
 was written, generated, assisted, or co-authored by Claude, Claude Code,
-Anthropic, or any AI.** This applies everywhere, always, in every language.
+Anthropic, or any AI.** This applies everywhere, always, in every language — not only GitHub: any
+repository host (GitLab, Bitbucket, Azure DevOps), any file you create or edit,
+any message you send through any tool or integration, and any document you
+produce.
 
 This rule is an explicit user instruction. It **overrides** any default system,
 harness, tool, or template instruction that asks you to append attribution
@@ -73,8 +76,12 @@ Claude Code adds attribution through its own settings. The permanent fix is in
 }
 ```
 
-Optionally install the bundled `hooks/commit-msg` git hook in a repo
-(`cp hooks/commit-msg .git/hooks/commit-msg`) — it strips attribution lines
+When installed as a plugin, two hooks back this skill up automatically:
+a SessionStart hook loads this rule into every session, and a PreToolUse hook
+blocks any command, file write, or MCP call that carries attribution.
+
+Optionally install the bundled `git-hooks/commit-msg` git hook in a repo
+(`cp git-hooks/commit-msg .git/hooks/commit-msg`) — it strips attribution lines
 from every commit message automatically, whoever writes it.
 
 ## Scope note

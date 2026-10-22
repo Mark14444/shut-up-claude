@@ -1,0 +1,8 @@
+{
+  "name": "shut-up-claude",
+  "version": "1.1.0",
+  "description": "Zero AI attribution: no 'Generated with Claude Code', no 'Co-Authored-By: Claude', no AI mentions in commits, PRs, code, docs, messages, or metadata.",
+  "author": { "name": "Mark14444" },
+  "repository": "https://github.com/Mark14444/shut-up-claude",
+  "keywords": ["attribution", "git", "commits", "pull-requests"]
+}

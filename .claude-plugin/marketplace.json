@@ -1,0 +1,11 @@
+{
+  "name": "shut-up-claude",
+  "owner": { "name": "Mark14444" },
+  "plugins": [
+    {
+      "name": "shut-up-claude",
+      "source": "./",
+      "description": "Zero AI attribution in commits, PRs, code, docs, messages, and metadata."
+    }
+  ]
+}
